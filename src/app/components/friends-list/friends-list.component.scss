@@ -1,0 +1,58 @@
+/* Container */
+.friends-list-container {
+    padding: 20px;
+    background-color: #f5f5f5;
+    border-radius: 8px;
+}
+
+/* Friend item */
+.friend-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+}
+
+/* Friend item text */
+.friend-item-text {
+    flex: 1;
+    margin-left: 10px;
+}
+
+/* Friend status */
+.friend-status {
+    margin-left: 10px;
+    font-weight: bold;
+}
+
+.friend-status.online {
+    color: green;
+}
+
+.friend-status.skating {
+    color: blue;
+}
+
+.friend-status.offline {
+    color: red;
+}
+
+/* Buttons */
+.action-button {
+    margin-left: 10px;
+    padding: 5px 10px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.action-button.add {
+    background-color: #4caf50;
+    color: #fff;
+}
+
+.action-button.remove {
+    background-color: #f44336;
+    color: #fff;
+}
