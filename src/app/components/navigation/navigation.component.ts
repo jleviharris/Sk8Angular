@@ -18,5 +18,11 @@ export class NavigationComponent {
 
     goToFriends() {
     this.router.navigate(['/', 'friends']);
+    }
+    goToLogin() {
+      this.router.navigate(['/', 'login']);
+    }
+    goToRegister() {
+        this.router.navigate(['/', 'register']);
   }
 }

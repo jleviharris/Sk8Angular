@@ -9,6 +9,7 @@ import { FriendsListComponent } from './components/friends-list/friends-list.com
 import { SkateparksListComponent } from './components/skateparks-list/skateparks-list.component';
 import { SettingsPageComponent } from './components/settings-page/settings-page.component';
 import { AuthGuard } from './auth.guard';
+import { RegisterComponent } from './components/register/register.component';
 
 
 const routes: Routes = [
@@ -20,15 +21,23 @@ const routes: Routes = [
 },
   {
     path: 'friends', component: FriendsListComponent,
-    canActivate: [AuthGuard]
+   
 },
   {
     path: 'skateparks', component: SkateparksListComponent,
-    canActivate: [AuthGuard]
+  
 },
   {
     path: 'settings', component: SettingsPageComponent,
-    canActivate: [AuthGuard]
+    
+},
+{
+  path: 'login', component: LoginComponent,
+ 
+},
+{
+  path: 'register', component: RegisterComponent,
+
 },
   { path: '', redirectTo: 'profile', pathMatch: 'full' }, // Default route
   { path: '**', redirectTo: 'profile', pathMatch: 'full' } // Catch-all route
