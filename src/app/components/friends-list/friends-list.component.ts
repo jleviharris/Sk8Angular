@@ -1,39 +1,57 @@
 import { Component, OnInit } from '@angular/core';
-//import { FriendService } from '../../services/friend.service';
-//import { Friend } from '../../models/friend';
+import { NgFor } from '@angular/common';
+import { NgModel } from '@angular/forms';
+
+interface Friend {
+  name: string;
+}
 
 @Component({
   selector: 'app-friends-list',
+  standalone: true,
   templateUrl: './friends-list.component.html',
+  imports: [],
   styleUrls: ['./friends-list.component.scss']
 })
 export class FriendsListComponent implements OnInit {
-  // Array to hold the list of friends
-  //friends: Friend[] = [];
+  friends: Friend[] = [
+    { name: 'John' },
+    { name: 'Jane' },
+    { name: 'Doe' }
+  ];
+  newFriendName: string = '';
+  searchQuery: string = '';
+  users: Friend[] = [
+    { name: 'Alice' },
+    { name: 'Bob' },
+    { name: 'Charlie' }
+  ];
+  searchResults: Friend[] = [];
 
-  // Inject the FriendService into the constructor
-  constructor(//private friendService: FriendService
-  ) {}
+  constructor() { }
 
-  // Lifecycle hook to fetch the list of friends on component initialization
   ngOnInit(): void {
-    // Retrieve the list of friends from the service
-   // this.friendService.getFriends().subscribe((data: Friend[]) => {
-     // this.friends = data;
-    //});
+    this.searchResults = this.users;
   }
 
-  // Additional methods for handling friend actions (e.g., adding, removing) can be defined here
-  // Example:
-  // addFriend(newFriend: Friend): void {
-  //   this.friendService.addFriend(newFriend).subscribe((friend) => {
-  //     this.friends.push(friend);
-  //   });
-  // }
+  addFriend(user?: Friend) {
+    if (user) {
+      this.friends.push(user);
+    } else if (this.newFriendName.trim() !== '') {
+      this.friends.push({ name: this.newFriendName });
+      this.newFriendName = '';
+    }
+  }
 
-  // removeFriend(friendId: string): void {
-  //   this.friendService.removeFriend(friendId).subscribe(() => {
-  //     this.friends = this.friends.filter(friend => friend.id !== friendId);
-  //   });
-  // }
+  removeFriend(friend: Friend) {
+    this.friends = this.friends.filter(f => f !== friend);
+  }
+
+  searchFriends() {
+    this.searchResults = this.users.filter(user =>
+      user.name.toLowerCase().includes(this.searchQuery.toLowerCase())
+    );
+  }
 }
+
+
